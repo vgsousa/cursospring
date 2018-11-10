@@ -1,5 +1,6 @@
 package br.com.vgsousa.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repositorio;
 
+	
+	public List<Categoria> findAll() {
+		return repositorio.findAll();
+	}
+	
 	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repositorio.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
