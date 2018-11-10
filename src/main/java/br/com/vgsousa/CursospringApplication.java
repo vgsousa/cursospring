@@ -70,6 +70,11 @@ public class CursospringApplication implements CommandLineRunner{
 		
 		Categoria cat1 = new Categoria(null, "Informatica");
 		Categoria cat2 = new Categoria(null, "Escritório");
+		Categoria cat3 = new Categoria(null, "Cozinha");
+		Categoria cat4 = new Categoria(null, "Jardinagem");
+		Categoria cat5 = new Categoria(null, "Sala");
+		Categoria cat6 = new Categoria(null, "Eletrônicos");
+		Categoria cat7 = new Categoria(null, "Perfumaria");
 		
 		Produto p1 = new Produto(null, "Computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 800.00);
@@ -83,7 +88,7 @@ public class CursospringApplication implements CommandLineRunner{
 		p3.getCategorias().addAll(Arrays.asList(cat1));		
 		
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 		
 		
