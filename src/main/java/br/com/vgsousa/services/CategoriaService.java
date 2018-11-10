@@ -3,10 +3,12 @@ package br.com.vgsousa.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.vgsousa.domain.Categoria;
 import br.com.vgsousa.repositories.CategoriaRepository;
+import br.com.vgsousa.services.exceptions.DataIntegrityException;
 import br.com.vgsousa.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -29,5 +31,15 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		find(obj.getId());
 		return repositorio.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		
+		try {
+			repositorio.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível excluir uma categoria com produtos");
+		}
 	}
 }
