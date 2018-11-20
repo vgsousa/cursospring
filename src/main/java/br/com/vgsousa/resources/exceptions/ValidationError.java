@@ -13,7 +13,7 @@ public class ValidationError extends StandardError{
 
 	}
 
-	public List<FieldMessage> geErrors() {
+	public List<FieldMessage> getErrors() {
 		return errors;
 	}
 
